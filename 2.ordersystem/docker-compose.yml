@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+  mydb:
+    image: mariadb
+    environment:
+      - MARIADB_ROOT_PASSWORD=${DB_PW}
+      - MARIADB_DATABASE=ordersystem
+    volumes:
+      - db_data:/var/lib/mysql
+    # 개발 환경에서만 외부 포트 열 필요
+    # ports:
+    #   - "3306:3306"
+
+  myredis:
+    image: redis
+    # ports:
+    #   - "6379:6379"
+
+  my-spring:
+    image: kimseonguk/ordersystem:latest
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mydb
+      - myredis
+    restart: on-failure:10
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mariadb://mydb:3306/ordersystem
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=${DB_PW}
+      - SPRING_REDIS_HOST=myredis
+      - JWT_SECRETKEYAT=${AT_SECRET_KEY}
+      - JWT_SECRETKEYRT=${RT_SECRET_KEY}
+
+volumes:
+  db_data:
