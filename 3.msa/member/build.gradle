@@ -39,8 +39,8 @@ dependencies {
 
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 
-// //	eureka client의존성 추가
-// 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+//	eureka client의존성 추가
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 
 }
 
