@@ -27,24 +27,28 @@ spring:
           filters:
 #            첫번째 접두어를 제거한후에 member-service 서버로 http요청 전달
             - StripPrefix=1
-#          eureka에 등록된 member-service라는 이름으로 http요청 전달
-          uri: lb://member-service
+# #          eureka에 등록된 member-service라는 이름으로 http요청 전달
+#           uri: lb://member-service
+#          service로 등록된 member-service라는 이름으로 http요청 전달
+          uri: http://member-service
         - id: ordering-service
           predicates:
             - Path=/ordering-service/**
           filters:
             #            첫번째 접두어를 제거한후에 member-service 서버로 http요청 전달
             - StripPrefix=1
-          #          eureka에 등록된 member-service라는 이름으로 http요청 전달
-          uri: lb://ordering-service
+          # #          eureka에 등록된 member-service라는 이름으로 http요청 전달
+          # uri: lb://ordering-service
+          uri: http://ordering-service
         - id: product-service
           predicates:
             - Path=/product-service/**
           filters:
             #            첫번째 접두어를 제거한후에 member-service 서버로 http요청 전달
             - StripPrefix=1
-          #          eureka에 등록된 member-service라는 이름으로 http요청 전달
-          uri: lb://product-service
+          # #          eureka에 등록된 member-service라는 이름으로 http요청 전달
+          # uri: lb://product-service
+          uri: http://product-service
 
 jwt:
   expirationAt: 1000

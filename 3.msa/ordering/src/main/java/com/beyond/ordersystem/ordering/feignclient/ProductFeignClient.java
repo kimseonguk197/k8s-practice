@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 //name부분은 eureka에 등록된 application.name을 의미
-@FeignClient(name = "product-service")
+// @FeignClient(name = "product-service")
+//url은 k8s에서 service명
+@FeignClient(name = "product-service", url="http://product-service")
 public interface ProductFeignClient {
     @GetMapping("/product/detail/{productId}")
     CommonDto getProductById(@PathVariable("productId") Long productId);
