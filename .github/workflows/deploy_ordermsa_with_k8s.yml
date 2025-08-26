@@ -3,7 +3,7 @@ name: deploy order order-backend
 on:
   push:
     branches:
-      - dev
+      - main
 
 jobs:
   build-and-deploy:
@@ -36,7 +36,7 @@ jobs:
       - name: gateway build and push docker image to ecr
         env:
           REGISTRY: 346903264902.dkr.ecr.ap-northeast-2.amazonaws.com
-          REPOSITORY: apigateway
+          REPOSITORY: bradkim/apigateway
           IMAGE_TAG: latest
         run: |
           docker build \
@@ -52,7 +52,7 @@ jobs:
       - name: member build and push docker image to ecr
         env:
           REGISTRY: 346903264902.dkr.ecr.ap-northeast-2.amazonaws.com
-          REPOSITORY: member-service
+          REPOSITORY: bradkim/member-service
           IMAGE_TAG: latest
         run: |
           docker build \
@@ -68,7 +68,7 @@ jobs:
       - name: order build and push docker image to ecr
         env:
           REGISTRY: 346903264902.dkr.ecr.ap-northeast-2.amazonaws.com
-          REPOSITORY: ordering-service
+          REPOSITORY: bradkim/ordering-service
           IMAGE_TAG: latest
         run: |
           docker build \
@@ -84,7 +84,7 @@ jobs:
       - name: product build and push docker image to ecr
         env:
           REGISTRY: 346903264902.dkr.ecr.ap-northeast-2.amazonaws.com
-          REPOSITORY: product-service
+          REPOSITORY: bradkim/product-service
           IMAGE_TAG: latest
         run: |
           docker build \

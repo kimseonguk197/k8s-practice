@@ -12,7 +12,7 @@ spec:
     kind: Deployment
     name: ordersystem-backend
   minReplicas: 2
-  maxReplicas: 10
+  maxReplicas: 3
   targetCPUUtilizationPercentage: 30
 
 # 메트릭 서버와 HPA를 통한 pod 현황 조회
