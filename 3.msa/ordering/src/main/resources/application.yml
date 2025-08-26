@@ -3,7 +3,7 @@ spring:
   application:
     name: ordering-service
   redis:
-    host: localhost
+    host: redis-service
     port: 6379
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
